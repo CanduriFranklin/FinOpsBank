@@ -3,12 +3,27 @@
  */
 package finopsbank;
 
+import com.finopsbank.Main;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    @Test void mainRunsSuccessfully() {
+        // Mock user input
+        String simulatedInput = "3\n"; // Simulates selecting "Exit" from the menu
+        InputStream originalIn = System.in;
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        try {
+            Main.main(new String[]{});
+        } catch (Exception e) {
+            fail("Main method threw an exception: " + e.getMessage());
+        } finally {
+            // Restore original System.in
+            System.setIn(originalIn);
+        }
     }
 }
