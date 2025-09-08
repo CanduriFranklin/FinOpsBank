@@ -74,3 +74,24 @@ Below are screenshots documenting the manual testing session:
 
 ## 4. Conclusion
 The FinOpsBank application is fully functional and passes all manual tests. It is ready for further development, deployment, or demonstration.
+
+---
+
+## 5. Known Limitations
+
+### Gradle Run Task Limitation
+- The `./gradlew run` command does not handle interactive console input properly in certain environments.
+- This limitation is due to Gradle's handling of standard input, which causes issues with methods like `Scanner.nextLine()`.
+
+### Workaround
+- To run the application interactively, use the following commands:
+  1. Build the project:
+     ```bash
+     ./gradlew build
+     ```
+  2. Run the application directly with Java:
+     ```bash
+     java -cp build/classes/java/main com.finopsbank.Main
+     ```
+
+This ensures that the application can handle user input correctly.
