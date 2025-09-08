@@ -21,13 +21,11 @@ public class AccountServiceTest {
     void testDeposit() {
         // Arrange
         String accountNumber = "123";
-        com.finopsbank.core.CheckingAccount account = new com.finopsbank.core.CheckingAccount(accountNumber, "cust1", 100.0);
-        accountService.deposit(accountNumber, 50.0); // Should not work yet, as account is not saved
-        // Save account first
-        accountService = new AccountService(new com.finopsbank.data.InMemoryAccountRepository(), new com.finopsbank.data.InMemoryTransactionRepository());
         com.finopsbank.data.AccountRepository repo = new com.finopsbank.data.InMemoryAccountRepository();
+        com.finopsbank.data.TransactionRepository txRepo = new com.finopsbank.data.InMemoryTransactionRepository();
+        com.finopsbank.core.CheckingAccount account = new com.finopsbank.core.CheckingAccount(accountNumber, "cust1", 100.0);
         repo.save(account);
-        accountService = new AccountService(repo, new com.finopsbank.data.InMemoryTransactionRepository());
+        accountService = new com.finopsbank.business.AccountService(repo, txRepo);
 
         // Act
         accountService.deposit(accountNumber, 50.0);

@@ -34,7 +34,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "finopsbank.App"
+    mainClass = "com.finopsbank.Main"
 }
 
 tasks.named<Test>("test") {
