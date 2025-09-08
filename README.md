@@ -50,16 +50,38 @@ Once the repository has been cloned, navigate to the project's main folder:
 cd FinOpsBank
 ```
 
-### 3. Run the Application
-To compile and run the application from the terminal, use the Gradle Wrapper included in the project.
+### 3. Build the Application
+To compile the application, use:
 
 ```
-./gradlew run
+./gradlew build
 ```
 
-### 4. Run the Unit Tests
+### 4. Run the Application (Interactive Console)
+To run the interactive console application, use:
+
+```
+java -cp app/build/libs/app.jar com.finopsbank.Main
+```
+
+> **Note:** If you use `./gradlew run` and encounter input issues, use the direct `java` command above.
+
+### 5. Run the Unit Tests
 To ensure the code works as expected, you can run the unit test suite with the following command:
 
 ```
 ./gradlew test
 ```
+
+## Documentation and Directories
+
+- All technical documentation and testing evidence is in the `docs/` directory.
+- Manual testing steps and results are in `docs/PHASE4_MANUAL_TESTING.md`.
+- Screenshots of the console session are included as:
+	- `docs/screenshot_manual_test_1.png`
+	- `docs/screenshot_manual_test_2.png`
+	- `docs/screenshot_manual_test_3.png`
+	- `docs/screenshot_manual_test_4.png`
+	- `docs/screenshot_manual_test_5.png`
+
+Refer to the documentation for detailed project phases, usage instructions, and real test results.
