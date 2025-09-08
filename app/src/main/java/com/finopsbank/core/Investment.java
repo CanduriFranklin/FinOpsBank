@@ -20,5 +20,9 @@ public class Investment {
         this.creationDate = creationDate;
     }
 
-    // Getters and setters
+    public String getInvestmentId() { return investmentId; }
+    public String getAccountNumber() { return accountNumber; }
+    public String getType() { return type; }
+    public double getInitialAmount() { return initialAmount; }
+    public LocalDate getCreationDate() { return creationDate; }
 }

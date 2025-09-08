@@ -12,5 +12,10 @@ public class TransactionService {
         this.transactionRepository = transactionRepository;
     }
 
-    // TODO: Implement getTransactionHistory method
+    /**
+     * Retrieve the transaction history for a given account.
+     */
+    public java.util.List<com.finopsbank.transactions.Transaction> getTransactionHistory(String accountNumber) {
+        return transactionRepository.findByAccountNumber(accountNumber);
+    }
 }

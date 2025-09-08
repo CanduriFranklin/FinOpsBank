@@ -18,6 +18,10 @@ public abstract class Account {
     public double getBalance() { return balance; }
     public String getCustomerId() { return customerId; }
 
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     public abstract void deposit(double amount);
     public abstract void withdraw(double amount);
 }

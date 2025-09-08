@@ -19,11 +19,38 @@ public class AccountServiceTest {
 
     @Test
     void testDeposit() {
-        // TODO: Implement test
+        // Arrange
+        String accountNumber = "123";
+        com.finopsbank.core.CheckingAccount account = new com.finopsbank.core.CheckingAccount(accountNumber, "cust1", 100.0);
+        accountService.deposit(accountNumber, 50.0); // Should not work yet, as account is not saved
+        // Save account first
+        accountService = new AccountService(new com.finopsbank.data.InMemoryAccountRepository(), new com.finopsbank.data.InMemoryTransactionRepository());
+        com.finopsbank.data.AccountRepository repo = new com.finopsbank.data.InMemoryAccountRepository();
+        repo.save(account);
+        accountService = new AccountService(repo, new com.finopsbank.data.InMemoryTransactionRepository());
+
+        // Act
+        accountService.deposit(accountNumber, 50.0);
+
+        // Assert
+        com.finopsbank.core.Account updated = repo.findByAccountNumber(accountNumber).get();
+        org.junit.jupiter.api.Assertions.assertEquals(150.0, updated.getBalance(), 0.001);
     }
 
     @Test
     void testWithdraw() {
-        // TODO: Implement test
+        // Arrange
+        String accountNumber = "456";
+        com.finopsbank.core.CheckingAccount account = new com.finopsbank.core.CheckingAccount(accountNumber, "cust2", 200.0);
+        com.finopsbank.data.AccountRepository repo = new com.finopsbank.data.InMemoryAccountRepository();
+        repo.save(account);
+        accountService = new AccountService(repo, new com.finopsbank.data.InMemoryTransactionRepository());
+
+        // Act
+        accountService.withdraw(accountNumber, 80.0);
+
+        // Assert
+        com.finopsbank.core.Account updated = repo.findByAccountNumber(accountNumber).get();
+        org.junit.jupiter.api.Assertions.assertEquals(120.0, updated.getBalance(), 0.001);
     }
 }

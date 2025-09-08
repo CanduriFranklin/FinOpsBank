@@ -10,11 +10,14 @@ public class CheckingAccount extends Account {
 
     @Override
     public void deposit(double amount) {
-        // TODO: Implement deposit logic
+        if (amount <= 0) throw new IllegalArgumentException("Deposit amount must be positive");
+        this.balance += amount;
     }
 
     @Override
     public void withdraw(double amount) {
-        // TODO: Implement withdraw logic
+        if (amount <= 0) throw new IllegalArgumentException("Withdraw amount must be positive");
+        if (amount > this.balance) throw new IllegalArgumentException("Insufficient funds");
+        this.balance -= amount;
     }
 }

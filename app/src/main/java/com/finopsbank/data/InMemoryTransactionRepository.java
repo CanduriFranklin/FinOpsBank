@@ -6,6 +6,7 @@ import java.util.*;
 /**
  * In-memory implementation of TransactionRepository.
  */
+@SuppressWarnings("unused")
 public class InMemoryTransactionRepository implements TransactionRepository {
     private final Map<String, List<Transaction>> transactions = new HashMap<>();
 
