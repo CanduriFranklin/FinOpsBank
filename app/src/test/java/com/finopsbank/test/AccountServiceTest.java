@@ -23,7 +23,7 @@ public class AccountServiceTest {
         String accountNumber = "123";
         com.finopsbank.data.AccountRepository repo = new com.finopsbank.data.InMemoryAccountRepository();
         com.finopsbank.data.TransactionRepository txRepo = new com.finopsbank.data.InMemoryTransactionRepository();
-        com.finopsbank.core.CheckingAccount account = new com.finopsbank.core.CheckingAccount(accountNumber, "cust1", 100.0);
+        com.finopsbank.core.CheckingAccount account = new com.finopsbank.core.CheckingAccount(accountNumber, "custom1", 100.0);
         repo.save(account);
         accountService = new com.finopsbank.business.AccountService(repo, txRepo);
 
@@ -31,7 +31,8 @@ public class AccountServiceTest {
         accountService.deposit(accountNumber, 50.0);
 
         // Assert
-        com.finopsbank.core.Account updated = repo.findByAccountNumber(accountNumber).get();
+        com.finopsbank.core.Account updated;
+        updated = repo.findByAccountNumber(accountNumber).get();
         org.junit.jupiter.api.Assertions.assertEquals(150.0, updated.getBalance(), 0.001);
     }
 
@@ -39,7 +40,7 @@ public class AccountServiceTest {
     void testWithdraw() {
         // Arrange
         String accountNumber = "456";
-        com.finopsbank.core.CheckingAccount account = new com.finopsbank.core.CheckingAccount(accountNumber, "cust2", 200.0);
+        com.finopsbank.core.CheckingAccount account = new com.finopsbank.core.CheckingAccount(accountNumber, "custom2", 200.0);
         com.finopsbank.data.AccountRepository repo = new com.finopsbank.data.InMemoryAccountRepository();
         repo.save(account);
         accountService = new AccountService(repo, new com.finopsbank.data.InMemoryTransactionRepository());

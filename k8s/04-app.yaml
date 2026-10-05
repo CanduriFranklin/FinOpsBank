@@ -1,0 +1,51 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finopsbank-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: finopsbank-api
+  template:
+    metadata:
+      labels:
+        app: finopsbank-api
+    spec:
+      containers:
+      - name: finopsbank-api
+        image: finopsbank-api:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:postgresql://postgres-service:5432/finopsbank_db"
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: finopsbank-secret
+              key: POSTGRES_USER
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: finopsbank-secret
+              key: POSTGRES_PASSWORD
+        - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+          valueFrom:
+            configMapKeyRef:
+              name: finopsbank-config
+              key: KAFKA_BOOTSTRAP_SERVERS
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: finopsbank-api-service
+spec:
+  type: NodePort
+  selector:
+    app: finopsbank-api
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30080

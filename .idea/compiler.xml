@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="25">
+      <module name="FinOpsBank.app.main" target="21" />
+      <module name="FinOpsBank.app.test" target="21" />
+      <module name="FinOpsBank.domain.main" target="21" />
+      <module name="FinOpsBank.domain.test" target="21" />
+      <module name="FinOpsBank.infrastructure.main" target="21" />
+      <module name="FinOpsBank.infrastructure.test" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="FinOpsBank.app" options="-parameters" />
+      <module name="FinOpsBank.app.main" options="-parameters" />
+      <module name="FinOpsBank.app.test" options="-parameters" />
+      <module name="FinOpsBank.infrastructure" options="-parameters" />
+      <module name="FinOpsBank.infrastructure.main" options="-parameters" />
+      <module name="FinOpsBank.infrastructure.test" options="-parameters" />
+    </option>
+  </component>
+</project>

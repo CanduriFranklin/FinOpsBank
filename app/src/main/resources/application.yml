@@ -1,0 +1,32 @@
+﻿spring:
+  application:
+    name: finopsbank-api
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/finopsbank_db
+    username: postgres
+    password: Enginer012%
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: finopsbank-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+server:
+  port: 8080

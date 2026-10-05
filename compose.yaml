@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: finopsbank-app
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "host.containers.internal:host-gateway"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://host.containers.internal:5432/finopsbank
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: "Enginer012%"

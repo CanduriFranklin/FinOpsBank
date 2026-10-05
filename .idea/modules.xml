@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FinOpsBank.iml" filepath="$PROJECT_DIR$/.idea/modules/FinOpsBank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FinOpsBank.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FinOpsBank.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FinOpsBank.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FinOpsBank.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FinOpsBank.app.test.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FinOpsBank.app.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/FinOpsBank.domain.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/FinOpsBank.domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/FinOpsBank.domain.main.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/FinOpsBank.domain.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/FinOpsBank.domain.test.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/FinOpsBank.domain.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infrastructure/FinOpsBank.infrastructure.iml" filepath="$PROJECT_DIR$/.idea/modules/infrastructure/FinOpsBank.infrastructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infrastructure/FinOpsBank.infrastructure.main.iml" filepath="$PROJECT_DIR$/.idea/modules/infrastructure/FinOpsBank.infrastructure.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infrastructure/FinOpsBank.infrastructure.test.iml" filepath="$PROJECT_DIR$/.idea/modules/infrastructure/FinOpsBank.infrastructure.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FinOpsBank.main.iml" filepath="$PROJECT_DIR$/.idea/modules/FinOpsBank.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FinOpsBank.test.iml" filepath="$PROJECT_DIR$/.idea/modules/FinOpsBank.test.iml" />
+    </modules>
+  </component>
+</project>

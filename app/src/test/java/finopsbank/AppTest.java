@@ -5,10 +5,11 @@ package finopsbank;
 
 import com.finopsbank.Main;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
     @Test void mainRunsSuccessfully() {
