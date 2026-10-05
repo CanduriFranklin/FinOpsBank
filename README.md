@@ -1,6 +1,6 @@
 # 🚀 FinOpsBank: Financial Transaction Control System
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white) ![Gradle](https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white) ![JUnit](https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-0095D5?style=for-the-badge&logo=kotlin&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) ![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white) ![Gradle](https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white) ![JUnit](https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-0095D5?style=for-the-badge&logo=kotlin&logoColor=white) ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
 
 ---
 
@@ -22,8 +22,10 @@ FinOpsBank is a Java console application that simulates a basic banking system. 
 ![Gradle](https://upload.wikimedia.org/wikipedia/commons/5/5f/Gradle_logo.png)
 - **Java:** Primary programming language, used to build backend logic.
 - **Gradle:** Build automation tool. Handles dependency management and the project lifecycle.
-- **JDK 24:** Java development environment.
+- **JDK 25:** Java development environment (IBM Semeru Runtime Open Edition).
 - **JUnit 5:** Unit testing framework used to ensure code quality and functionality.
+- **Windows:** Operating system environment used for development, testing, and deployment scripts.
+- **IntelliJ IDEA:** Primary Integrated Development Environment (IDE) used for project structuring, debugging, and execution.
 
 ---
 
@@ -55,42 +57,7 @@ FinOpsBank is not just a functional application; it is a demonstration of good p
 
 ## 🚀 Getting Started
 
-### 1. Clone the Repository
+1. ### Clone the Repository
+
 ```bash
-git clone https://github.com/CanduriFranklin/FinOpsBank.git
-```
-
-### 2. Navigate to the Project Directory
-```bash
-cd FinOpsBank
-```
-
-### 3. Build the Application
-```bash
-./gradlew build
-```
-
-### 4. Run the Application (Interactive Console)
-```bash
-java -cp app/build/libs/app.jar com.finopsbank.Main
-```
-> **Note:** If you use `./gradlew run` and encounter input issues, use the direct `java` command above.
-
-### 5. Run the Unit Tests
-```bash
-./gradlew test
-```
-
----
-
-## 📜 Documentation
-- All technical documentation and testing evidence is in the `docs/` directory.
-- Manual testing steps and results are in `docs/PHASE4_MANUAL_TESTING.md`.
-- Screenshots of the console session are included as:
-  - `docs/screenshot_manual_test_1.png`
-  - `docs/screenshot_manual_test_2.png`
-  - `docs/screenshot_manual_test_3.png`
-  - `docs/screenshot_manual_test_4.png`
-  - `docs/screenshot_manual_test_5.png`
-
-Refer to the documentation for detailed project phases, usage instructions, and real test results.
+git clone [https://github.com/CanduriFranklin/FinOpsBank.git](https://github.com/CanduriFranklin/FinOpsBank.git)

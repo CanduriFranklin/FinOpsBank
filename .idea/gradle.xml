@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="25" />
+        <option name="resolveExternalAnnotations" value="true" />
+        <option name="myGradleHome" value="C:\ProgramData\chocolatey\lib\gradle\tools\gradle-9.6.0" />
+      </GradleProjectSettings>
+    </option>
+    <option name="parallelModelFetch" value="true" />
+  </component>
+</project>
