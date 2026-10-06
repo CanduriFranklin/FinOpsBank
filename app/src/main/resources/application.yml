@@ -1,32 +1,66 @@
 ﻿spring:
   application:
     name: finopsbank-api
-  
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/finopsbank_db
+    url: jdbc:postgresql://172.25.208.1:5432/finopsbank_db
     username: postgres
     password: Enginer012%
     driver-class-name: org.postgresql.Driver
-  
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 300000
+      max-lifetime: 1800000
+
   jpa:
     hibernate:
       ddl-auto: validate
     show-sql: true
+    open-in-view: false
     properties:
       hibernate:
         format_sql: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        # dialect elimination — Hibernate 7 lo autodetected
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: 172.25.208.1:9094
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
       group-id: finopsbank-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
 
 server:
   port: 8080
+
+jwt:
+  secret: 9f8a3b7c1e5d2f4a6b8c0e2d4f6a8b1c3d5e7f9a2b4c6d8e0f1a3b5c7d9e1f2a
+  expiration-ms: 86400000
+
+# =============================================================
+# LOGGING TEMPORAL DE DIAGNÓSTICO
+# Cuando el POST funcione, elimina este bloque completo.
+# =============================================================
+logging:
+  level:
+    root: INFO
+    # Seguridad en modo detallado
+    org.springframework.security: TRACE
+    org.springframework.security.web: TRACE
+    org.springframework.security.web.access: TRACE
+    org.springframework.security.web.access.intercept: TRACE
+    org.springframework.security.web.access.ExceptionTranslationFilter: TRACE
+    org.springframework.security.web.FilterChainProxy: TRACE
+    org.springframework.security.web.csrf: TRACE
+    org.springframework.security.web.context: TRACE
+    org.springframework.security.web.authentication: TRACE
+    # Nuestro filtro JWT personalizado
+    com.finopsbank.security: TRACE
+    # Resto de la app
+    com.finopsbank: DEBUG

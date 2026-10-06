@@ -1,8 +1,64 @@
-# Ignore Gradle project-specific cache directory
-.gradle
+# ============================================
+# FinOpsBank - .gitignore
+# ============================================
 
-# Ignore Gradle build output directory
-build
+# === IDE ===
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.code-workspace
+.project
+.classpath
+.settings/
 
-.idea/dataSources.xml
-.idea/db-forest-config.xml
+# === Build / Gradle ===
+.gradle/
+build/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+out/
+target/
+bin/
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# === Backups / Temporales ===
+*.bak
+*.orig
+*.rej
+*.tmp
+*.swp
+*~
+
+# === Logs ===
+*.log
+logs/
+
+# === Sistema Operativo ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Contenedores ===
+*.tar
+*.tar.gz
+
+# === Archivos locales / secretos ===
+# Config específica de máquina o credenciales locales
+application-local.yml
+application-local.properties
+*.env
+.env.local
+.env.*.local
+
+# === Test / Coverage ===
+.coverage
+coverage/
+*.exec
+
+# === Kotlin / Java ===
+*.classpath
+*.project

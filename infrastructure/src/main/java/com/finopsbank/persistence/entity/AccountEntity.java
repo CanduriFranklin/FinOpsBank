@@ -11,6 +11,9 @@ public class AccountEntity {
     @Column(name = "account_number", nullable = false, unique = true)
     private String accountNumber;
 
+    @Column(name = "customer_id", nullable = false)
+    private String customerId;
+
     @Column(name = "owner_name", nullable = false)
     private String ownerName;
 
@@ -22,8 +25,10 @@ public class AccountEntity {
 
     public AccountEntity() {}
 
-    public AccountEntity(String accountNumber, String ownerName, BigDecimal balance, String accountType) {
+    public AccountEntity(String accountNumber, String customerId, String ownerName,
+                         BigDecimal balance, String accountType) {
         this.accountNumber = accountNumber;
+        this.customerId = customerId;
         this.ownerName = ownerName;
         this.balance = balance;
         this.accountType = accountType;
@@ -31,6 +36,8 @@ public class AccountEntity {
 
     public String getAccountNumber() { return accountNumber; }
     public void setAccountNumber(String accountNumber) { this.accountNumber = accountNumber; }
+    public String getCustomerId() { return customerId; }
+    public void setCustomerId(String customerId) { this.customerId = customerId; }
     public String getOwnerName() { return ownerName; }
     public void setOwnerName(String ownerName) { this.ownerName = ownerName; }
     public BigDecimal getBalance() { return balance; }

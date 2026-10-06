@@ -1,14 +1,5 @@
-﻿.git
-.gitignore
 .gradle
 .idea
-.vscode
-build
-*/build
-bin
-out
 *.log
-Containerfile
-compose.yml
-k8s/
-README.md
+build/
+!app/build/libs/*.jar

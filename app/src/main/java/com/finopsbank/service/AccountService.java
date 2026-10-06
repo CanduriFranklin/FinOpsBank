@@ -29,12 +29,14 @@ public class AccountService {
         String type = (request.accountType() != null) ? request.accountType() : "SAVINGS";
         AccountEntity account = new AccountEntity(
                 request.accountNumber(),
+                request.customerId(),
                 request.ownerName(),
                 request.initialBalance(),
                 type
         );
         AccountEntity saved = accountRepository.save(account);
-        eventPublisher.publishEvent(saved.getAccountNumber(), "ACCOUNT_CREATED: Initial balance " + saved.getBalance());
+        eventPublisher.publishEvent(saved.getAccountNumber(),
+                "ACCOUNT_CREATED: Initial balance " + saved.getBalance());
         return saved;
     }
 
@@ -56,7 +58,8 @@ public class AccountService {
         account.setBalance(account.getBalance().add(request.amount()));
         AccountEntity updated = accountRepository.save(account);
 
-        eventPublisher.publishEvent(updated.getAccountNumber(), "DEPOSIT_COMPLETED: Amount " + request.amount() + " | New Balance " + updated.getBalance());
+        eventPublisher.publishEvent(updated.getAccountNumber(),
+                "DEPOSIT_COMPLETED: Amount " + request.amount() + " | New Balance " + updated.getBalance());
         return updated;
     }
 
@@ -72,7 +75,8 @@ public class AccountService {
         account.setBalance(account.getBalance().subtract(request.amount()));
         AccountEntity updated = accountRepository.save(account);
 
-        eventPublisher.publishEvent(updated.getAccountNumber(), "WITHDRAWAL_COMPLETED: Amount " + request.amount() + " | New Balance " + updated.getBalance());
+        eventPublisher.publishEvent(updated.getAccountNumber(),
+                "WITHDRAWAL_COMPLETED: Amount " + request.amount() + " | New Balance " + updated.getBalance());
         return updated;
     }
 
@@ -85,8 +89,10 @@ public class AccountService {
         withdraw(new WithdrawRequest(request.sourceAccountNumber(), request.amount()));
         deposit(new DepositRequest(request.targetAccountNumber(), request.amount()));
 
-        eventPublisher.publishEvent(request.sourceAccountNumber(), "TRANSFER_SENT: To " + request.targetAccountNumber() + " | Amount " + request.amount());
-        eventPublisher.publishEvent(request.targetAccountNumber(), "TRANSFER_RECEIVED: From " + request.sourceAccountNumber() + " | Amount " + request.amount());
+        eventPublisher.publishEvent(request.sourceAccountNumber(),
+                "TRANSFER_SENT: To " + request.targetAccountNumber() + " | Amount " + request.amount());
+        eventPublisher.publishEvent(request.targetAccountNumber(),
+                "TRANSFER_RECEIVED: From " + request.sourceAccountNumber() + " | Amount " + request.amount());
 
         return "Transferencia realizada con éxito";
     }
