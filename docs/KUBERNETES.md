@@ -613,4 +613,17 @@ Podman Desktop Kubernetes
 
 12-Factor App
 
+---
+
+---
+
+## Secrets in Development
+
+The `k8s/02-secret.yaml` file contains **placeholders**. Before deploying:
+
+1. Edit the file with the actual values.
+2. Apply the manifest: `kubectl apply -f k8s/02-secret.yaml`.
+
+For production, use **Sealed Secrets** or **External Secrets Operator**. Do not commit actual secrets to the repository.
+
 <p align="center"> <strong>FinOpsBank</strong> - Kubernetes Deployment Guide </p>
