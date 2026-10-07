@@ -6,6 +6,49 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [1.1.0] - 2026-10-07
+
+### Added
+
+#### Kubernetes Deployment
+
+- `k8s/00-namespace.yaml` — Namespace `finopsbank`
+- `k8s/01-configmap.yaml` — Non-sensitive configuration (DB URL, Kafka bootstrap, logging)
+- `k8s/02-secret.yaml` — DB password and JWT secret
+- `k8s/03-postgres.yaml` — PostgreSQL 17 StatefulSet with PVC and health probes
+- `k8s/04-kafka.yaml` — Apache Kafka 4.3.1 KRaft StatefulSet with internal DNS listeners
+- `k8s/05-api.yaml` — API Deployment + NodePort 30080 with readiness/liveness probes
+- `k8s/kind-config.yaml` — Kind cluster config with port mapping `8080 -> 30080`
+- `docs/PROJECT_STATUS.md` — Certification of current project state
+- `docs/patterns/DESIGN_PATTERNS.md` — Catalogue of design patterns used
+- `docs/phases/PHASE5_KUBERNETES_DEPLOYMENT.md` — Kubernetes deployment milestone
+
+### Fixed
+
+- `TransactionEntity`: changed `id` from `String` to `Long` with `@GeneratedValue(strategy = IDENTITY)` to match `BIGSERIAL` column
+- `TransactionEntity`: removed `transactionReference` and `currency` fields (not present in the database schema)
+- `TransactionEntity`: changed `createdAt` from `LocalDateTime` to `OffsetDateTime` to match `TIMESTAMPTZ`
+- `SpringDataTransactionRepository`: changed ID type from `String` to `Long`
+- Resolved `Schema validation: wrong column type encountered in column [id] in table [transactions]`
+
+### Changed
+
+- `docs/KUBERNETES.md`: updated status from "Pending" to "Implemented and verified"
+- `docs/README.md`: added the 3 new documents to the index
+- Root `README.md`: updated Kubernetes section to reflect implementation
+
+### Verified
+
+- Deployed to Kind cluster on Podman rootful
+- All 3 pods (`finopsbank-api`, `kafka-0`, `postgres-0`) running `1/1` with `RESTARTS: 0`
+- End-to-end verified from Windows:
+  - Login returns valid JWT
+  - `POST /api/v1/accounts` persists to PostgreSQL
+  - `GET /api/v1/accounts` retrieves data
+  - Kafka publishes and consumes `ACCOUNT_CREATED` events
+  - API accessible at `http://localhost:8080` via NodePort
+
+---
 
 ## [Unreleased]
 

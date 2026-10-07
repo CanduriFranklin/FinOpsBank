@@ -13,7 +13,8 @@ General index of the **FinOpsBank API** project documentation.
 | [API.md](API.md) | Complete REST endpoint reference | Frontend, Consumers |
 | [SECURITY.md](SECURITY.md) | JWT authentication, roles, CSRF, security filters | Backend, Security |
 | [KAFKA.md](KAFKA.md) | KRaft configuration, topics, Outbox pattern | Backend, DevOps |
-| [KUBERNETES.md](KUBERNETES.md) | Kubernetes cluster deployment plan | DevOps, SRE |
+| [KUBERNETES.md](KUBERNETES.md) | Kubernetes cluster deployment guide | DevOps, SRE |
+| [PROJECT_STATUS.md](PROJECT_STATUS.md) | Certification of current project state (v1.1.0) | Everyone |
 | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | Known errors and solutions | Everyone |
 | [CHANGELOG.md](CHANGELOG.md) | Version history | Everyone |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guide and conventions | Contributors |
@@ -28,6 +29,7 @@ Initial project phase documents are kept in [`phases/`](phases/) for reference:
 - [PHASE2_CONSOLE_AND_LOGIC.md](phases/PHASE2_CONSOLE_AND_LOGIC.md) - Console logic
 - [PHASE3_TESTING_AND_STATUS.md](phases/PHASE3_TESTING_AND_STATUS.md) - Testing and status
 - [PHASE4_MANUAL_TESTING.md](phases/PHASE4_MANUAL_TESTING.md) - Manual testing
+- [PHASE5_KUBERNETES_DEPLOYMENT.md](phases/PHASE5_KUBERNETES_DEPLOYMENT.md) - Kubernetes deployment milestone
 - [PROJECT_STATE.md](phases/PROJECT_STATE.md) - Project state (historical)
 - [ROADMAP.md](phases/ROADMAP.md) - Roadmap (historical)
 - [README_LEGACY_CONSOLE.md](phases/README_LEGACY_CONSOLE.md) - Original README (console app)
@@ -38,6 +40,7 @@ Initial project phase documents are kept in [`phases/`](phases/) for reference:
 
 Applied in the project, documented in [`patterns/`](patterns/):
 
+- [DESIGN_PATTERNS.md](patterns/DESIGN_PATTERNS.md) - Catalogue of GoF, enterprise, and cloud-native patterns
 - [OUTBOX_PATTERN.md](patterns/OUTBOX_PATTERN.md) - Outbox pattern for reliable event publishing
 - [LAYERED_ARCHITECTURE.md](patterns/LAYERED_ARCHITECTURE.md) - Layered architecture
 

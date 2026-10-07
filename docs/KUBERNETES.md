@@ -2,7 +2,9 @@
 
 Deployment plan and reference for running **FinOpsBank** on Kubernetes.
 
-> **Status**: Pending implementation. This document describes the target architecture and provides ready-to-apply manifests.
+> **Status**: ✅ **Implemented and verified**. Deployed to a Kind cluster on Podman rootful. All 3 pods (`finopsbank-api`, `kafka-0`, `postgres-0`) running with `RESTARTS: 0`. End-to-end verified from Windows at `http://localhost:8080`.
+>
+> See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the current certification and [phases/PHASE5_KUBERNETES_DEPLOYMENT.md](phases/PHASE5_KUBERNETES_DEPLOYMENT.md) for the deployment milestone.
 
 ---
 
@@ -439,15 +441,25 @@ Requires an Ingress controller (nginx, Traefik). Add to /etc/hosts on Windows:
 
 text
 127.0.0.1    finopsbank.local
-Deployment Steps
-1. Load the image into the cluster
+
+## Deployment Steps
+### 1. Load the image into the cluster
+
 Kind and Minikube run in their own container runtime, so they cannot see images built with Podman on the host.
 
-For Kind:
+**Important**: `kind load docker-image` **does not work** with Podman (no Docker daemon). Use `podman save` + `kind load image-archive` instead.
 
-powershell
-kind load docker-image localhost/finopsbank-api:v1.0 --name finopsbank
-For Minikube:
+**For Kind (with Podman):**
+
+```powershell
+# Export from Podman
+podman save localhost/finopsbank-api:v1.0 -o finopsbank-api.tar
+
+# Load into Kind
+kind load image-archive .\finopsbank-api.tar --name finopsbank
+
+# Clean up
+Remove-Item .\finopsbank-api.tar -Force
 
 powershell
 # Build inside minikube's Docker daemon

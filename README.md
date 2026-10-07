@@ -230,15 +230,26 @@ AccountServiceTest.java — pure business logic
 
 tests/performance/k6-load-test.js — load testing with k6
 
-Kubernetes
-Status: Pending implementation. The k8s/ folder is reserved for manifests.
+## Kubernetes
 
-Recommended local cluster options
-Tool	Description	Requirement
-Kind	Kubernetes IN Docker	Podman rootful
-Minikube	Full local cluster	Podman rootful
-MicroShift (MINC)	Lightweight OpenShift cluster	Podman Desktop extension
-See docs/KUBERNETES.md for the deployment plan.
+> **Status**: ✅ **Implemented and verified.** Deployed to a Kind cluster (Kubernetes 1.29.2) on Podman rootful.
+
+### Current deployment
+$ kubectl get pods -n finopsbank
+NAME READY STATUS RESTARTS AGE
+finopsbank-api-79b455668d-qtj2m 1/1 Running 0 8m31s
+kafka-0 1/1 Running 0 79m
+postgres-0 1/1 Running 0 79m
+
+### Quick deploy
+
+powershell
+kind create cluster --config .\k8s\kind-config.yaml
+podman save localhost/finopsbank-api:v1.0 -o finopsbank-api.tar
+kind load image-archive .\finopsbank-api.tar --name finopsbank
+Remove-Item .\finopsbank-api.tar -Force
+kubectl apply -f .\k8s\
+Full guide: docs/KUBERNETES.md
 
 Resources:
 
