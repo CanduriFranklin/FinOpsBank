@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finopsbank-api
+  namespace: finopsbank
+  labels:
+    app: finopsbank-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: finopsbank-api
+  template:
+    metadata:
+      labels:
+        app: finopsbank-api
+    spec:
+      containers:
+        - name: api
+          image: localhost/finopsbank-api:v1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: finopsbank-config
+            - secretRef:
+                name: finopsbank-secret
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 6
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 90
+            periodSeconds: 30
+          resources:
+            requests:
+              memory: "384Mi"
+              cpu: "200m"
+            limits:
+              memory: "768Mi"
+              cpu: "1000m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: finopsbank-api-service
+  namespace: finopsbank
+spec:
+  type: NodePort
+  selector:
+    app: finopsbank-api
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      nodePort: 30080

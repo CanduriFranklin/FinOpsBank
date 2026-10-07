@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: finopsbank-config
+  namespace: finopsbank
+data:
+  POSTGRES_DB_NAME: "finopsbank_db"
+  SPRING_PROFILES_ACTIVE: "prod"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://postgres-service:5432/finopsbank_db"
+  SPRING_DATASOURCE_USERNAME: "postgres"
+  SPRING_KAFKA_BOOTSTRAP_SERVERS: "kafka-service:9092"
+  SERVER_PORT: "8080"
+  LOGGING_LEVEL_ROOT: "WARN"
+  LOGGING_LEVEL_COM_FINOPSBANK: "INFO"

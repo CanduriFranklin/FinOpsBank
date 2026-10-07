@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SpringDataTransactionRepository extends JpaRepository<TransactionEntity, String> {
+public interface SpringDataTransactionRepository extends JpaRepository<TransactionEntity, Long> {
     List<TransactionEntity> findBySourceAccountNumberOrTargetAccountNumberOrderByCreatedAtDesc(String sourceAccount, String targetAccount);
 }
